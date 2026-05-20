@@ -1,0 +1,33 @@
+# Docker Agent
+
+This repository provides a template of a development sandbox for coding agents.
+
+It has the following features:
+
+1. Relies on [`gVisor`](https://github.com/google/gvisor) for providing a safe sandbox.
+2. Provides a redundant rootfs with passwordless sudo.
+3. Exposes users home directory.
+
+These are only the absolutely minimal restrictions that one should place while using
+coding agents. Further restrictions can be obviously applied, when seen feasible.
+
+## Creating a development container
+
+Initialize `.env` and start the container:
+
+```sh
+just init docker-agent
+docker compose up --build
+```
+
+Override can be done with, for example, `just RUN=runc init`.
+
+A development shell can be opened inside the container as follows:
+
+```
+docker exec -it docker-agent zsh -l
+```
+
+## License
+
+`docker-agent` is licensed under `MIT`.  See [LICENSE](LICENSE) for more information.
