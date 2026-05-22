@@ -19,5 +19,6 @@ init name:
         "DOCKER_AGENT_SOCKET=\"${docker_socket}\"" \
         "DOCKER_AGENT_DOCKER_GID=\"${docker_gid}\"" \
         "DOCKER_AGENT_KVM_GID=\"${kvm_gid}\"" \
+        "DOCKER_AGENT_NETWORK_MODE=\"bridge\"" \
         "DOCKER_AGENT_RUNTIME=\"{{RUN}}\"" \
         > .env

@@ -14,6 +14,7 @@ services:
         DOCKER_AGENT_USERNAME: ${USER}
     image: ${DOCKER_AGENT_IMAGE}
     container_name: ${DOCKER_AGENT_NAME}
+    network_mode: ${DOCKER_AGENT_NETWORK_MODE:-bridge}
     runtime: ${DOCKER_AGENT_RUNTIME}
     user: "${DOCKER_AGENT_UID:?}:${DOCKER_AGENT_GID:?}"
     group_add:
