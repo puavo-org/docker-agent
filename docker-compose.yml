@@ -40,7 +40,7 @@ services:
       - type: bind
         source: ${DOCKER_AGENT_XDG_RUNTIME_DIR:-/run/user/${DOCKER_AGENT_UID:?}}
         target: ${DOCKER_AGENT_XDG_RUNTIME_DIR:-/run/user/${DOCKER_AGENT_UID:?}}
-        read_only: true
+        read_only: false
         bind:
           create_host_path: false
     devices:
