@@ -26,6 +26,7 @@ services:
       XDG_RUNTIME_DIR: ${DOCKER_AGENT_XDG_RUNTIME_DIR:-/run/user/${DOCKER_AGENT_UID:?}}
       SSH_AUTH_SOCK: ${DOCKER_AGENT_SSH_AUTH_SOCK:-}
       HINDSIGHT_BASE_URL: ${DOCKER_AGENT_HINDSIGHT_BASE_URL:-http://host.docker.internal:8888}
+      HINDSIGHT_API_URL: ${DOCKER_AGENT_HINDSIGHT_BASE_URL:-http://host.docker.internal:8888}
     extra_hosts:
       - "host.docker.internal:${DOCKER_AGENT_HOST_GATEWAY:-host-gateway}"
     working_dir: ${HOME}
