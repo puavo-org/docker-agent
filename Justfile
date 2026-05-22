@@ -20,5 +20,7 @@ init name:
         "DOCKER_AGENT_DOCKER_GID=\"${docker_gid}\"" \
         "DOCKER_AGENT_KVM_GID=\"${kvm_gid}\"" \
         "DOCKER_AGENT_NETWORK_MODE=\"bridge\"" \
+        "DOCKER_AGENT_HINDSIGHT_BASE_URL=\"http://host.docker.internal:8888\"" \
+        "DOCKER_AGENT_HOST_GATEWAY=\"host-gateway\"" \
         "DOCKER_AGENT_RUNTIME=\"{{RUN}}\"" \
         > .env

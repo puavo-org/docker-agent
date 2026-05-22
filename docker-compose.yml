@@ -23,6 +23,9 @@ services:
     environment:
       HOME: ${HOME}
       USER: ${USER}
+      HINDSIGHT_BASE_URL: ${DOCKER_AGENT_HINDSIGHT_BASE_URL:-http://host.docker.internal:8888}
+    extra_hosts:
+      - "host.docker.internal:${DOCKER_AGENT_HOST_GATEWAY:-host-gateway}"
     working_dir: ${HOME}
     volumes:
       - type: bind
