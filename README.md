@@ -11,6 +11,23 @@ It has the following features:
 These are only the absolutely minimal restrictions that one should place while using
 coding agents. Further restrictions can be obviously applied, when seen feasible.
 
+## Docker settings
+
+`sudo runsc install` has SUID disabled by default.
+
+SUID can be enabled by editing `/etc/docker/daemom.json` and adding `runtimeArgs` field:
+
+```json
+{
+  "runtimes": {
+    "runsc": {
+      "path": "/usr/bin/runsc",
+      "runtimeArgs": ["--allow-suid"]
+    }
+  }
+}
+```
+
 ## Creating a development container
 
 Initialize `.env` and start the container:
