@@ -4,25 +4,29 @@ This repository provides a template of a development sandbox for coding agents.
 
 It has the following features:
 
-1. Relies on [`gVisor`](https://github.com/google/gvisor) for providing a safe sandbox.
+1. Relies on [`gVisor`](https://github.com/google/gvisor) for providing a safe
+   sandbox.
 2. Provides a redundant rootfs with passwordless sudo.
 3. Exposes users home directory.
 
-These are only the absolutely minimal restrictions that one should place while using
-coding agents. Further restrictions can be obviously applied, when seen feasible.
+These are only the absolutely minimal restrictions that one should place while
+using coding agents. Further restrictions can be obviously applied, when seen
+feasible.
 
 ## Docker settings
 
-`sudo runsc install` has SUID disabled by default.
+`sudo runsc install` has SUID and host Unix-domain socket access disabled by
+default.
 
-SUID can be enabled by editing `/etc/docker/daemom.json` and adding `runtimeArgs` field:
+SUID can be enabled by editing `/etc/docker/daemom.json` and adding
+`runtimeArgs` field:
 
 ```json
 {
   "runtimes": {
     "runsc": {
       "path": "/usr/bin/runsc",
-      "runtimeArgs": ["--allow-suid"]
+      "runtimeArgs": ["--allow-suid", "--host-uds=open"]
     }
   }
 }

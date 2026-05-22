@@ -23,6 +23,8 @@ services:
     environment:
       HOME: ${HOME}
       USER: ${USER}
+      XDG_RUNTIME_DIR: ${DOCKER_AGENT_XDG_RUNTIME_DIR:-/run/user/${DOCKER_AGENT_UID:?}}
+      SSH_AUTH_SOCK: ${DOCKER_AGENT_SSH_AUTH_SOCK:-}
       HINDSIGHT_BASE_URL: ${DOCKER_AGENT_HINDSIGHT_BASE_URL:-http://host.docker.internal:8888}
     extra_hosts:
       - "host.docker.internal:${DOCKER_AGENT_HOST_GATEWAY:-host-gateway}"
@@ -34,5 +36,11 @@ services:
       - type: bind
         source: ${DOCKER_AGENT_SOCKET:-/var/run/docker.sock}
         target: /var/run/docker.sock
+      - type: bind
+        source: ${DOCKER_AGENT_XDG_RUNTIME_DIR:-/run/user/${DOCKER_AGENT_UID:?}}
+        target: ${DOCKER_AGENT_XDG_RUNTIME_DIR:-/run/user/${DOCKER_AGENT_UID:?}}
+        read_only: true
+        bind:
+          create_host_path: false
     devices:
       - /dev/kvm:/dev/kvm
