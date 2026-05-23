@@ -18,7 +18,7 @@ feasible.
 `sudo runsc install` has SUID and host Unix-domain socket access disabled by
 default.
 
-SUID can be enabled by editing `/etc/docker/daemom.json` and adding
+SUID can be enabled by editing `/etc/docker/daemon.json` and adding
 `runtimeArgs` field:
 
 ```json
